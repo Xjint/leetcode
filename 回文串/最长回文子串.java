@@ -12,7 +12,7 @@ public class 最长回文子串 {
         String tmp;
         for (int i = 0; i < s.length() - 1; i++) {
             for (int j = i + 1; j <= s.length(); j++) {
-                if (isPalindrome(tmp = s.substring(i, j), i, j) && (j - i) > res.length()) {
+                if (isPalindrome(tmp = s.substring(i, j)) && (j - i) > res.length()) {
                     res = tmp;
                 }
             }
@@ -20,11 +20,11 @@ public class 最长回文子串 {
         return res;
     }
 
-    public boolean isPalindrome(String s, int left, int right) {
+    public boolean isPalindrome(String s) {
         if (s == null || s.equals("")) {
             return true;
         }
-        int l = left, r = right;
+        int l = 0, r = s.length() - 1;
         s = s.toLowerCase();
         while (l <= r) {
             char cl = s.charAt(l);
