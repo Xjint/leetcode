@@ -5,21 +5,21 @@ package 链表;
  */
 public class 链表两数相加 {
 
-    public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
-        ListNode<Integer> dummy = new ListNode<>(0);
-        ListNode<Integer> node = dummy;
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode node = dummy;
         int flag = 0;
         while (l1 != null || l2 != null) {
-            int value = (l1 == null ? 0 : l1.getValue()) + (l2 == null ? 0 : l2.getValue()) + flag;
-            node.setNext(new ListNode<>(value % 10));
+            int value = (l1 == null ? 0 : l1.value) + (l2 == null ? 0 : l2.value) + flag;
+            node.next = new ListNode(value % 10);
             flag = value % 10;
-            node = node.getNext();
-            l1 = l1 == null ? null : l1.getNext();
-            l2 = l2 == null ? null : l2.getNext();
+            node = node.next;
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
         }
         if (flag != 0) {
-            node.setNext(new ListNode<>(flag));
+            node.next = new ListNode(flag);
         }
-        return dummy.getNext();
+        return dummy.next;
     }
 }
