@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -20,5 +21,30 @@ public class 有序矩阵中第k小的元素 {
         }
         list.sort(Comparator.naturalOrder());
         return list.get(k - 1);
+    }
+
+    public int kthSmallestV2(int[][] matrix, int k) {
+        return Arrays
+                .stream(matrix)
+                .reduce(有序矩阵中第k小的元素::merge2Array)
+                .orElse(new int[k])
+                [k - 1];
+    }
+
+    /*合并两个有序数组*/
+    public static int[] merge2Array(int[] array1, int[] array2) {
+        int[] ans = new int[array1.length + array2.length];
+        int index = 0;
+        int i = 0, j = 0;
+        while (i < array1.length && j < array2.length) {
+            ans[index++] = array1[i] < array2[j] ? array1[i++] : array2[j++];
+        }
+        while (i < array1.length) {
+            ans[index++] = array1[i++];
+        }
+        while (j < array2.length) {
+            ans[index++] = array2[j++];
+        }
+        return ans;
     }
 }
