@@ -1,5 +1,7 @@
 package 链表;
 
+import base.ListNode;
+
 /**
  * Created by jintao.bai on 2020/5/28 15:33
  */
