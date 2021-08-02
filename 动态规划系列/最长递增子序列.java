@@ -33,7 +33,7 @@ public class 最长递增子序列 {
     for (int i = 1; i < arr.length; i++) {
       dp[i] = 1;
       for (int j = 0; j < i; j++) {
-        if (dp[i] > dp[j]) {
+        if (arr[i] > arr[j]) {
           dp[i] = Math.max(dp[i], dp[j] + 1);
         }
       }
